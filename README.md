@@ -1,5 +1,7 @@
 # Spearhead Score Tracker
 
+**Live app: https://DadsoftheWarp.github.io/spearheadscoretracker/**
+
 A mobile-first score tracking app for **Age of Sigmar: Spearhead**. Track Victory Points, Battle Tactics, and Twist Points across all four rounds, record player win/loss history, and review game stats — all offline from your iPad or phone.
 
 ---
