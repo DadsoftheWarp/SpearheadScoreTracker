@@ -330,6 +330,9 @@ export default function GameScreen({ setup, onEndGame }) {
         player2: { ...setup.player2, rounds: p2Rounds, total: p2Total },
         winner,
         priorities,
+        realmSet: setup.realmSet ?? null,
+        realmLabel: setup.realmLabel ?? null,
+        map: setup.map ?? null,
       });
     }
   }

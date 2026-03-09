@@ -94,11 +94,67 @@ function PlayerSetup({ label, name, setName, team, setTeam, listId, knownPlayers
   );
 }
 
+const REALMS = {
+  'fire-and-jade': { label: 'Fire & Jade', maps: ['Aqshy', 'Ghyran'] },
+  'sand-and-bone': { label: 'Sand & Bone', maps: ['Ossia', 'Dolorum'] },
+};
+
+function BoardSection({ realmSet, setRealmSet, map, setMap }) {
+  function handleRealmClick(key) {
+    if (realmSet === key) {
+      setRealmSet(null);
+      setMap(null);
+    } else {
+      setRealmSet(key);
+      setMap(null);
+    }
+  }
+
+  const realm = realmSet ? REALMS[realmSet] : null;
+
+  return (
+    <div className={styles.boardSection}>
+      <p className={styles.boardSectionLabel}>Realm</p>
+      <div className={styles.realmToggle}>
+        {Object.entries(REALMS).map(([key, { label }]) => (
+          <button
+            key={key}
+            className={`${styles.realmBtn} ${realmSet === key ? styles.realmBtnActive : ''}`}
+            onClick={() => handleRealmClick(key)}
+            type="button"
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+      {realm && (
+        <>
+          <p className={styles.boardSectionLabel}>Map</p>
+          <div className={styles.realmToggle}>
+            {realm.maps.map((mapName) => (
+              <button
+                key={mapName}
+                className={`${styles.realmBtn} ${map === mapName ? styles.realmBtnActive : ''}`}
+                onClick={() => setMap(mapName)}
+                type="button"
+              >
+                {mapName}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 export default function GameSetupScreen({ onStart, onBack, knownPlayers = [] }) {
   const [p1Name, setP1Name] = useState('');
   const [p1Team, setP1Team] = useState('');
   const [p2Name, setP2Name] = useState('');
   const [p2Team, setP2Team] = useState('');
+  const [realmSet, setRealmSet] = useState(null);
+  const [map, setMap] = useState(null);
   const [error, setError] = useState('');
 
   function handleStart() {
@@ -112,6 +168,9 @@ export default function GameSetupScreen({ onStart, onBack, knownPlayers = [] }) 
     onStart({
       player1: { name: p1Name.trim(), faction: p1.faction || 'Unknown', spearhead: p1.spearhead, alliance: p1.alliance || 'Unknown' },
       player2: { name: p2Name.trim(), faction: p2.faction || 'Unknown', spearhead: p2.spearhead, alliance: p2.alliance || 'Unknown' },
+      realmSet: realmSet ?? null,
+      realmLabel: realmSet ? REALMS[realmSet].label : null,
+      map: map ?? null,
     });
   }
 
@@ -142,6 +201,12 @@ export default function GameSetupScreen({ onStart, onBack, knownPlayers = [] }) 
           knownPlayers={knownPlayers}
         />
       </div>
+      <BoardSection
+        realmSet={realmSet}
+        setRealmSet={setRealmSet}
+        map={map}
+        setMap={setMap}
+      />
       {error && <p className="error-msg">{error}</p>}
       <button className={`btn btn-primary btn-large ${styles.setupStartBtn}`} onClick={handleStart}>
         Start Game

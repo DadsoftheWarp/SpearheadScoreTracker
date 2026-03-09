@@ -79,6 +79,9 @@ export default function App() {
       player2: result.player2,
       winner: result.winner,
       priorities: result.priorities ?? [],
+      realmSet: result.realmSet ?? null,
+      realmLabel: result.realmLabel ?? null,
+      map: result.map ?? null,
     };
 
     // 1. Save locally immediately

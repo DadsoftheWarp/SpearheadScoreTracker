@@ -79,6 +79,57 @@
   margin-top: auto;
 }
 
+/* ── Board / Realm selection ────────────────────────────────── */
+.boardSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.boardSectionLabel {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.realmToggle {
+  display: flex;
+  gap: 8px;
+}
+
+.realmBtn {
+  flex: 1;
+  min-height: 40px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.realmBtn:hover {
+  color: var(--text);
+  border-color: var(--border-bright);
+}
+
+.realmBtnActive {
+  background: var(--surface-3);
+  color: var(--accent);
+  border-color: rgba(232, 115, 42, 0.4);
+  box-shadow: 0 0 10px rgba(232, 115, 42, 0.12);
+}
+
+
 /* ── Roster Panel ───────────────────────────────────────────── */
 .rosterPanel {
   background: rgba(0, 0, 0, 0.2);

@@ -77,7 +77,7 @@ function PrioritySection({ priorities, player1Name, player2Name }) {
 }
 
 export default function GameSummaryScreen({ result, onSave, onDiscard }) {
-  const { player1, player2, winner, priorities = [] } = result;
+  const { player1, player2, winner, priorities = [], realmLabel, map } = result;
 
   const winnerName =
     winner === 'player1'
@@ -179,6 +179,11 @@ export default function GameSummaryScreen({ result, onSave, onDiscard }) {
             <span className={styles.factionChipSub}> · {player2.faction}</span>
           )}
         </span>
+        {realmLabel && (
+          <span className={styles.factionChip}>
+            {realmLabel}{map && <span className={styles.factionChipSub}> · {map}</span>}
+          </span>
+        )}
       </div>
 
       <div className={styles.summaryActions}>
