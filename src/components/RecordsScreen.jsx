@@ -250,6 +250,11 @@ function GameHistoryItem({ game, playerName }) {
         </span>
       </div>
       <div className={styles.historyOpponent}>vs {opp.name}</div>
+      {game.realmLabel && (
+        <div className={styles.historyBoard}>
+          {game.realmLabel}{game.map && ` · ${game.map}`}
+        </div>
+      )}
     </div>
   );
 }

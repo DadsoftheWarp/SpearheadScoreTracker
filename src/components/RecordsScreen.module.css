@@ -257,6 +257,12 @@
   color: var(--text-muted);
 }
 
+.historyBoard {
+  font-size: 0.78rem;
+  color: var(--gold);
+  opacity: 0.75;
+}
+
 .recordsDangerZone {
   margin-top: auto;
   padding-top: 16px;
