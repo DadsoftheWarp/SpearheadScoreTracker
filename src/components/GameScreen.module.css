@@ -514,30 +514,46 @@
 
 /* ── Responsive ─────────────────────────────────────────────── */
 
-/* Very small portrait phones — shrink counters */
-@media (max-width: 360px) {
+/* Stack round cards vertically on portrait phones */
+@media (max-width: 520px) and (orientation: portrait) {
+  .roundCards {
+    flex-direction: column;
+    flex: none;
+  }
+
   .roundCard {
-    padding: 6px 10px;
-    gap: 8px;
+    flex: none;
+    width: 100%;
   }
 
-  .counterBtn {
-    width: 34px;
-    height: 34px;
-    font-size: 1.1rem;
+  /* Header can be a natural-height row instead of fixed 60px column */
+  .roundCardHeader {
+    height: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 8px;
   }
 
-  .counterValue {
-    font-size: 1.05rem;
-    min-width: 24px;
+  .roundPlayerFaction {
+    text-align: right;
+    max-width: 55%;
   }
 
-  .gameHeader {
-    padding: 6px 12px;
+  /* Priority buttons — tighten label, let buttons fill remaining space */
+  .priorityRowLabel {
+    width: 46px;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
+
+  .initiativeBtn {
+    font-size: 0.8rem;
+    padding: 6px 6px;
   }
 }
 
-/* Landscape phones — tighten vertical rhythm */
+/* Landscape phones — keep side-by-side, tighten vertical rhythm */
 @media (max-height: 500px) and (orientation: landscape) {
   .gameHeader {
     padding: 6px 12px;
@@ -588,7 +604,7 @@
 .priorityRow {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 .priorityRowLabel {

@@ -2,10 +2,6 @@
   justify-content: center;
   align-items: center;
   gap: clamp(20px, 5vh, 48px);
-  background:
-    radial-gradient(ellipse at 50% 20%, rgba(232, 115, 42, 0.12) 0%, transparent 65%),
-    radial-gradient(ellipse at 80% 80%, rgba(212, 168, 67, 0.06) 0%, transparent 50%),
-    var(--bg);
 }
 
 .homeHero {
@@ -81,9 +77,9 @@
 
 /* ── Auth corner ────────────────────────────────────────────── */
 .authCorner {
-  position: absolute;
-  top: 12px;
-  right: 16px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 /* Signed-in user info chip (display only, not clickable) */
@@ -112,13 +108,13 @@
   background: var(--surface-2);
   border: 1px solid var(--border);
   border-radius: 20px;
-  padding: 5px 12px 5px 6px;
+  padding: 6px 12px;
   color: var(--text-muted);
   font-family: inherit;
-  font-size: 0.82rem;
+  font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  min-height: 36px;
+  line-height: inherit;
   transition: border-color 0.15s, color 0.15s;
 }
 
