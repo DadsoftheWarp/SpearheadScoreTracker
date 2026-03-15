@@ -15,6 +15,10 @@ function isStandalone() {
   return window.matchMedia('(display-mode: standalone)').matches;
 }
 
+function isIOS() {
+  return /iP(ad|hone|od)/.test(navigator.userAgent);
+}
+
 const provider = new GoogleAuthProvider();
 
 // Ensure auth state survives page reloads
@@ -27,14 +31,20 @@ export function useAuth() {
   const [authError, setAuthError] = useState(null);
 
   useEffect(() => {
-    // On iOS, signInWithPopup falls back to a redirect internally.
-    // We must explicitly consume the redirect result before onAuthStateChanged
-    // settles, otherwise it fires with null too early.
+    // Handle redirect result (standalone PWA + iOS redirect flow).
+    // When the popup flow navigates back into our app inside the popup window,
+    // getRedirectResult processes the auth and we close the popup so the user
+    // ends up back on the original tab already signed in.
     getRedirectResult(auth)
       .then((result) => {
         if (result?.user) {
           setUser(result.user);
           setLoading(false);
+          // If we're inside a popup window, close it — the original tab
+          // gets the auth state update via onAuthStateChanged + localStorage.
+          if (window.opener && !window.opener.closed) {
+            window.close();
+          }
         }
       })
       .catch((err) => {
@@ -53,7 +63,9 @@ export function useAuth() {
   async function signIn() {
     setAuthError(null);
     try {
-      if (isStandalone()) {
+      // iOS Safari doesn't support popup auth reliably — use redirect instead.
+      // Desktop browsers get the standard popup experience.
+      if (isStandalone() || isIOS()) {
         await signInWithRedirect(auth, provider);
       } else {
         await signInWithPopup(auth, provider);
@@ -64,9 +76,9 @@ export function useAuth() {
       if (code === 'auth/popup-blocked') {
         setAuthError('Pop-up was blocked. Please allow pop-ups for this site, or add it to your Home Screen and sign in from there.');
       } else if (code === 'auth/unauthorized-domain') {
-        setAuthError('This domain is not authorized in Firebase. Add dadsofthewarp.github.io to Firebase Console → Authentication → Authorized domains.');
+        setAuthError('This domain is not authorized in Firebase. Add it in Firebase Console → Authentication → Authorized domains.');
       } else if (code === 'auth/popup-closed-by-user') {
-        setAuthError('Sign-in was cancelled or the pop-up closed unexpectedly. Try again.');
+        setAuthError('Sign-in was cancelled. Try again.');
       } else {
         setAuthError(err?.message ?? 'Sign-in failed. Please try again.');
       }
