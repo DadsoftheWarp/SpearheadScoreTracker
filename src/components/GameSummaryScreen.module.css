@@ -232,3 +232,28 @@
   gap: 10px;
   margin-top: auto;
 }
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 360px) {
+  .winnerBanner {
+    font-size: 1.2rem;
+    padding: 14px;
+  }
+
+  .summaryTable th,
+  .summaryTable td {
+    padding: 6px 8px;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .winnerBanner {
+    padding: 12px;
+    font-size: 1.2rem;
+  }
+
+  .summaryActions {
+    flex-direction: row;
+    margin-top: 0;
+  }
+}

@@ -79,6 +79,28 @@
   margin-top: auto;
 }
 
+/* ── Responsive ─────────────────────────────────────────────── */
+
+/* Stack players vertically on small portrait phones */
+@media (max-width: 500px) and (orientation: portrait) {
+  .setupPlayers {
+    flex-direction: column;
+  }
+}
+
+/* Tighten padding in landscape */
+@media (max-height: 500px) and (orientation: landscape) {
+  .playerSetup {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  .boardSection {
+    padding: 10px 12px;
+    gap: 6px;
+  }
+}
+
 /* ── Board / Realm selection ────────────────────────────────── */
 .boardSection {
   display: flex;

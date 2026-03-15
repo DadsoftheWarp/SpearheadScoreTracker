@@ -17,14 +17,14 @@ export default function HomeScreen({
       {!authLoading && (
         <div className={styles.authCorner}>
           {user ? (
-            <button className={styles.authPill} onClick={onSignOut} title="Sign out">
+            <div className={styles.authUserInfo}>
               {user.photoURL ? (
                 <img className={styles.authAvatar} src={user.photoURL} alt="" referrerPolicy="no-referrer" />
               ) : (
                 <span className={styles.authInitial}>{(user.displayName ?? 'U')[0]}</span>
               )}
               <span className={styles.authName}>{(user.displayName ?? '').split(' ')[0]}</span>
-            </button>
+            </div>
           ) : (
             <button className={styles.authPill} onClick={onSignIn}>
               Sign in
@@ -57,6 +57,11 @@ export default function HomeScreen({
             ) : (
               'Groups'
             )}
+          </button>
+        )}
+        {user && (
+          <button className={`btn btn-ghost btn-large ${styles.signOutBtn}`} onClick={onSignOut}>
+            Sign Out
           </button>
         )}
       </div>

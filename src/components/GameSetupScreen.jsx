@@ -40,7 +40,15 @@ function RosterPanel({ team }) {
 }
 
 function PlayerSetup({ label, name, setName, team, setTeam, listId, knownPlayers }) {
-  const { faction, alliance } = resolveTeam(team);
+  const [selectedAlliance, setSelectedAlliance] = useState('');
+  const { faction } = resolveTeam(team);
+
+  function handleAllianceChange(e) {
+    setSelectedAlliance(e.target.value);
+    setTeam('');
+  }
+
+  const allianceFactions = selectedAlliance ? factions[selectedAlliance] : [];
 
   return (
     <div className={styles.playerSetup}>
@@ -65,14 +73,27 @@ function PlayerSetup({ label, name, setName, team, setTeam, listId, knownPlayers
 
       <select
         className="input"
-        value={team}
-        onChange={(e) => setTeam(e.target.value)}
+        value={selectedAlliance}
+        onChange={handleAllianceChange}
       >
-        <option value="">— Select Team —</option>
-        {alliances.map((allianceName) =>
-          factions[allianceName].map((factionName) => {
+        <option value="">— Select Alliance —</option>
+        {alliances.map((a) => (
+          <option key={a} value={a}>{a}</option>
+        ))}
+      </select>
+
+      {selectedAlliance && (
+        <select
+          className="input"
+          value={team}
+          onChange={(e) => setTeam(e.target.value)}
+        >
+          <option value="">— Select Team —</option>
+          {allianceFactions.map((factionName) => {
             const factionTeams = spearheads[factionName] || [];
-            const options = factionTeams.length > 0 ? factionTeams : [factionName];
+            const options = (factionTeams.length > 0 ? factionTeams : [factionName])
+              .slice()
+              .sort((a, b) => a.localeCompare(b));
             return (
               <optgroup key={factionName} label={factionName}>
                 {options.map((opt) => (
@@ -80,13 +101,13 @@ function PlayerSetup({ label, name, setName, team, setTeam, listId, knownPlayers
                 ))}
               </optgroup>
             );
-          })
-        )}
-      </select>
+          })}
+        </select>
+      )}
 
       {faction && (
-        <p className={`${styles.allianceBadge} ${allianceBadgeStyle[alliance.toLowerCase()] || ''}`}>
-          {alliance}{faction !== team ? ` · ${faction}` : ''}
+        <p className={`${styles.allianceBadge} ${allianceBadgeStyle[selectedAlliance.toLowerCase()] || ''}`}>
+          {selectedAlliance}{faction !== team ? ` · ${faction}` : ''}
         </p>
       )}
       <RosterPanel team={team} />

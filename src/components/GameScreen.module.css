@@ -1,5 +1,6 @@
 .gameScreen {
   gap: 8px;
+  overflow-y: auto;
 }
 
 .gameHeader {
@@ -75,6 +76,7 @@
 
 .roundCardHeader {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: baseline;
   height: 60px;
@@ -510,6 +512,64 @@
   font-weight: 800;
 }
 
+/* ── Responsive ─────────────────────────────────────────────── */
+
+/* Very small portrait phones — shrink counters */
+@media (max-width: 360px) {
+  .roundCard {
+    padding: 6px 10px;
+    gap: 8px;
+  }
+
+  .counterBtn {
+    width: 34px;
+    height: 34px;
+    font-size: 1.1rem;
+  }
+
+  .counterValue {
+    font-size: 1.05rem;
+    min-width: 24px;
+  }
+
+  .gameHeader {
+    padding: 6px 12px;
+  }
+}
+
+/* Landscape phones — tighten vertical rhythm */
+@media (max-height: 500px) and (orientation: landscape) {
+  .gameHeader {
+    padding: 6px 12px;
+  }
+
+  .roundCard {
+    padding: 6px 10px;
+    gap: 6px;
+  }
+
+  .roundCardHeader {
+    height: 48px;
+    padding-bottom: 6px;
+  }
+
+  .priorityCard {
+    padding: 8px 12px;
+    gap: 6px;
+  }
+
+  .prevRoundCard {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+
+  .prevRoundBtn,
+  .undoBtn,
+  .advanceBtn {
+    min-height: 44px;
+  }
+}
+
 /* ── Priority & First Turn Tracker ─────────────────────────── */
 .priorityCard {
   background: linear-gradient(
@@ -528,7 +588,7 @@
 .priorityRow {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 .priorityRowLabel {

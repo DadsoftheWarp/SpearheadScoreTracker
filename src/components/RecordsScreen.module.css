@@ -1,6 +1,6 @@
 .recordsScreen {
-  min-width: 400px;
   overflow-y: auto;
+  min-width: 0;
 }
 
 .searchInput {

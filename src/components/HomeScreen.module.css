@@ -1,7 +1,7 @@
 .homeScreen {
   justify-content: center;
   align-items: center;
-  gap: 48px;
+  gap: clamp(20px, 5vh, 48px);
   background:
     radial-gradient(ellipse at 50% 20%, rgba(232, 115, 42, 0.12) 0%, transparent 65%),
     radial-gradient(ellipse at 80% 80%, rgba(212, 168, 67, 0.06) 0%, transparent 50%),
@@ -17,7 +17,7 @@
 }
 
 .appTitle {
-  font-size: 2.8rem;
+  font-size: clamp(1.9rem, 7vw, 2.8rem);
   font-weight: 900;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -60,6 +60,25 @@
   max-width: 320px;
 }
 
+/* ── Landscape phone — side-by-side layout ──────────────────── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .homeScreen {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .homeHero {
+    flex-shrink: 0;
+  }
+
+  .homeActions {
+    max-width: 240px;
+    gap: 10px;
+  }
+}
+
 /* ── Auth corner ────────────────────────────────────────────── */
 .authCorner {
   position: absolute;
@@ -67,6 +86,25 @@
   right: 16px;
 }
 
+/* Signed-in user info chip (display only, not clickable) */
+.authUserInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 5px 12px 5px 6px;
+  min-height: 36px;
+}
+
+/* Sign out — sits in homeActions, red hover */
+.signOutBtn:hover {
+  border-color: var(--danger) !important;
+  color: var(--danger) !important;
+}
+
+/* Sign-in pill (unchanged) */
 .authPill {
   display: flex;
   align-items: center;

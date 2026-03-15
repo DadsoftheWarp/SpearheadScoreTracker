@@ -265,3 +265,39 @@ select.input {
   font-size: 0.875rem;
   text-align: center;
 }
+
+/* ============================================================
+   Responsive — small portrait phones
+   ============================================================ */
+@media (max-width: 360px) {
+  :root {
+    font-size: 15px;
+  }
+
+  .screen {
+    padding: 12px;
+    gap: 12px;
+  }
+}
+
+/* ============================================================
+   Responsive — landscape phones (short viewport)
+   ============================================================ */
+@media (max-height: 500px) and (orientation: landscape) {
+  .screen {
+    padding: 10px 14px;
+    gap: 10px;
+  }
+
+  .btn {
+    min-height: 40px;
+  }
+
+  .btn-large {
+    min-height: 44px;
+  }
+
+  .screen-header {
+    padding-bottom: 6px;
+  }
+}
