@@ -20,11 +20,20 @@ export default function HomeScreen({
           {user ? (
             <div className={styles.authUserInfo}>
               {user.photoURL ? (
-                <img className={styles.authAvatar} src={user.photoURL} alt="" referrerPolicy="no-referrer" />
+                <img
+                  className={styles.authAvatar}
+                  src={user.photoURL}
+                  alt=""
+                  referrerPolicy="no-referrer"
+                />
               ) : (
-                <span className={styles.authInitial}>{(user.displayName ?? 'U')[0]}</span>
+                <span className={styles.authInitial}>
+                  {(user.displayName ?? 'U')[0]}
+                </span>
               )}
-              <span className={styles.authName}>{(user.displayName ?? '').split(' ')[0]}</span>
+              <span className={styles.authName}>
+                {(user.displayName ?? '').split(' ')[0]}
+              </span>
             </div>
           ) : (
             <>
@@ -41,6 +50,7 @@ export default function HomeScreen({
         <h1 className={styles.appTitle}>Age of Sigmar: Spearhead</h1>
         <p className={styles.appSubtitle}>Score Tracker</p>
         <p className={styles.appTagline}>Presented by Dads of the Warp</p>
+        <p>Alpha Version</p>
       </div>
 
       <div className={styles.homeActions}>
@@ -51,7 +61,10 @@ export default function HomeScreen({
           Records
         </button>
         {user && (
-          <button className={`btn btn-secondary btn-large ${styles.groupsBtn}`} onClick={onGroups}>
+          <button
+            className={`btn btn-secondary btn-large ${styles.groupsBtn}`}
+            onClick={onGroups}
+          >
             {activeGroup ? (
               <>
                 <span className={styles.groupDot} />
@@ -64,7 +77,10 @@ export default function HomeScreen({
           </button>
         )}
         {user && (
-          <button className={`btn btn-ghost btn-large ${styles.signOutBtn}`} onClick={onSignOut}>
+          <button
+            className={`btn btn-ghost btn-large ${styles.signOutBtn}`}
+            onClick={onSignOut}
+          >
             Sign Out
           </button>
         )}
