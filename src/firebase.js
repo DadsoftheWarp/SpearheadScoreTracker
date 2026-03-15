@@ -19,7 +19,7 @@ import { getFirestore } from 'firebase/firestore';
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: 'AIzaSyC4GKGwExRba4FUJBN1qwZtWuixbMC7ugA',
-  authDomain: 'spearheadscoretracker.firebaseapp.com',
+  authDomain: 'spearheadscoretracker.web.app',
   projectId: 'spearheadscoretracker',
   storageBucket: 'spearheadscoretracker.firebasestorage.app',
   messagingSenderId: '176525277455',

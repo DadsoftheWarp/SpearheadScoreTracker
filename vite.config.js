@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
-  base: '/spearheadscoretracker/',
   plugins: [
     react(),
     VitePWA({
@@ -17,7 +16,7 @@ export default defineConfig({
         background_color: '#0f0d0b',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: '/spearheadscoretracker/',
+        start_url: '/',
         icons: [
           {
             src: 'pwa-192x192.png',
