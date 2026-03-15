@@ -246,6 +246,33 @@
   }
 }
 
+/* Portrait phones — tighten vertical space so content fits without scrolling */
+@media (max-height: 750px) and (orientation: portrait) {
+  .summaryScreen {
+    gap: 10px;
+  }
+
+  .summaryTitle {
+    font-size: 1.2rem;
+  }
+
+  .winnerBanner {
+    padding: 12px 16px;
+    font-size: 1.2rem;
+  }
+
+  .summaryTable th,
+  .summaryTable td {
+    padding: 5px 8px;
+  }
+
+  .summaryActions {
+    flex-direction: row;
+    margin-top: 0;
+    gap: 8px;
+  }
+}
+
 @media (max-height: 500px) and (orientation: landscape) {
   .winnerBanner {
     padding: 12px;

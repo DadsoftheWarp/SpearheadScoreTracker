@@ -7,7 +7,7 @@ export const spearheads = {
   'Idoneth Deepkin': ['Akhelian Tide Guard', 'Soulraid Hunt'],
   'Kharadron Overlords': ['Grundstok Trailblazers', 'Skyhammer Task Force'],
   'Lumineth Realm-lords': ['Glittering Phalanx', 'Hurakan Vangaurd'],
-  Seraphon: ['Starscale Warhost', 'Sunblood Prowlers'],
+  Seraphon: ['Starscale Warhost', 'Sunblooded Prowlers'],
   'Stormcast Eternals': ['Vigilant Brotherhood', "Yndrasta's Spearhead"],
   Sylvaneth: ['Bitterbark Copse', 'Spitewing Flight'],
   // Chaos
@@ -23,7 +23,7 @@ export const spearheads = {
   'Ossiarch Bonereapers': [
     'Mortisan Elite',
     'Kavalos Vanguard',
-    'Tith-Reaper Echelon',
+    'Tithe-Reaper Echelon',
   ],
   'Soulblight Gravelords': ['Deathrattle Tomb Host', 'Bloodcrave Hunt'],
   // Destruction
@@ -46,7 +46,6 @@ export const factions = {
     'Sylvaneth',
   ],
   Chaos: [
-    'Beasts of Chaos',
     'Blades of Khorne',
     'Disciples of Tzeentch',
     'Hedonites of Slaanesh',
@@ -83,11 +82,19 @@ export const rosters = {
   // ── Order ───────────────────────────────────────────────────
   'Castelite Company': {
     general: 'Knight of the Empty Throne',
-    units: ['Freeguild Steelhelms', 'Freeguild Steelhelms', 'Freeguild Cavaliers'],
+    units: [
+      'Freeguild Steelhelms',
+      'Freeguild Steelhelms',
+      'Freeguild Cavaliers',
+    ],
   },
   'Fusil-Platoon': {
     general: 'Cogsmith',
-    units: ['Freeguild Fusiliers', 'Freeguild Fusiliers', 'Ironweld Great Cannon'],
+    units: [
+      'Freeguild Fusiliers',
+      'Freeguild Fusiliers',
+      'Ironweld Great Cannon',
+    ],
   },
   'Heartflayer Troupe': {
     general: 'Slaughter Queen',
@@ -95,7 +102,11 @@ export const rosters = {
   },
   'Saga Axeband': {
     general: 'Auric Runemaster',
-    units: ['Hearthguard Berzerkers', 'Vulkite Berzerkers', 'Vulkite Berzerkers'],
+    units: [
+      'Hearthguard Berzerkers',
+      'Vulkite Berzerkers',
+      'Vulkite Berzerkers',
+    ],
   },
   'Akhelian Tide Guard': {
     general: 'Akhelian King',
@@ -115,11 +126,19 @@ export const rosters = {
   },
   'Glittering Phalanx': {
     general: 'Scinari Cathallar',
-    units: ['Vanari Auralan Wardens', 'Vanari Auralan Sentinels', 'Vanari Bladelords'],
+    units: [
+      'Vanari Auralan Wardens',
+      'Vanari Auralan Sentinels',
+      'Vanari Bladelords',
+    ],
   },
-  'Hurakan Vangaurd': {
+  'Hurakan Vanguard': {
     general: 'Hurakan Windmage',
-    units: ['Hurakan Windchargers', 'Hurakan Windchargers', 'Vanari Auralan Sentinels'],
+    units: [
+      'Hurakan Windchargers',
+      'Hurakan Windchargers',
+      'Vanari Auralan Sentinels',
+    ],
   },
   'Starscale Warhost': {
     general: 'Saurus Scar-Veteran on Cold One',
@@ -160,7 +179,11 @@ export const rosters = {
   },
   'Tzaangor Warflock': {
     general: 'Tzaangor Shaman',
-    units: ['Tzaangors', 'Tzaangor Enlightened on Disc', 'Screamers of Tzeentch'],
+    units: [
+      'Tzaangors',
+      'Tzaangor Enlightened on Disc',
+      'Screamers of Tzeentch',
+    ],
   },
   'Blades of the Lurid Dream': {
     general: 'Shardspeaker of Slaanesh',
@@ -240,7 +263,7 @@ export const rosters = {
     general: 'Megaboss on Maw-Krusha',
     units: ['Ardboyz', 'Brutes', 'Gore-gruntas'],
   },
-  'Swampskulla Gang': {
+  'Swampskulka Gang': {
     general: 'Killaboss on Corpse-rippa Vulcha',
     units: ['Gutrippaz', 'Man-skewer Boltboyz', 'Hobgrot Slittaz'],
   },

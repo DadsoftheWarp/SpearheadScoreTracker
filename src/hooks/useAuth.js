@@ -13,6 +13,10 @@ function isStandalone() {
   return window.matchMedia('(display-mode: standalone)').matches;
 }
 
+function isIOS() {
+  return /iP(ad|hone|od)/.test(navigator.userAgent);
+}
+
 const provider = new GoogleAuthProvider();
 
 export function useAuth() {
@@ -33,7 +37,7 @@ export function useAuth() {
 
   async function signIn() {
     try {
-      if (isStandalone()) {
+      if (isStandalone() || isIOS()) {
         await signInWithRedirect(auth, provider);
       } else {
         await signInWithPopup(auth, provider);
