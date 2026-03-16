@@ -4,8 +4,8 @@ import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyC4GKGwExRba4FUJBN1qwZtWuixbMC7ugA',
-  // Must match the hosting domain so the auth handler is same-origin (required for iOS Safari)
-  authDomain: 'spearheadscoretracker.web.app',
+  // Use the firebaseapp.com domain so Google OAuth redirect URIs are pre-configured
+  authDomain: 'spearheadscoretracker.firebaseapp.com',
   projectId: 'spearheadscoretracker',
   storageBucket: 'spearheadscoretracker.firebasestorage.app',
   messagingSenderId: '176525277455',
